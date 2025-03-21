@@ -1,13 +1,18 @@
 def verificadorEntrada(mensagem):
     while True:
-        byts = input(mensagem)
-        if len(byts) == 5 and all(n in ['0','1'] for n in byts):
-            return byts
-        else:
+        try:
+            valor = int(input(mensagem))
+            if valor in [0, 1]:
+                return valor
+            else:
+                print("Digite 1 ou 0")
+        except ValueError:
             print("Digite um valor válido!")
 
 
-def calcularNumero(byts):
+def calcularNumero(bit1,bit2,bit3,bit4,bit5):
+    byts = f"{bit1}{bit2}{bit3}{bit4}{bit5}"
+    
     decimal = (int(byts[0]) * pow(2,4)) + \
             (int(byts[1]) * pow(2,3)) + \
             (int(byts[2]) * pow(2,2)) + \
@@ -15,6 +20,9 @@ def calcularNumero(byts):
             (int(byts[4]) * pow(2,0))
     print(f"{byts} equivale ao número {decimal}")
 
-byts = verificadorEntrada("Digite um número binário com 5 caracteres: ")
-calcularNumero(byts)
-
+bit1 = verificadorEntrada("Digite o bit 1 (0 ou 1): ")
+bit2 = verificadorEntrada("Digite o bit 1 (0 ou 1): ")
+bit3 = verificadorEntrada("Digite o bit 1 (0 ou 1): ")
+bit4 = verificadorEntrada("Digite o bit 1 (0 ou 1): ")
+bit5 = verificadorEntrada("Digite o bit 1 (0 ou 1): ")
+calcularNumero(bit1,bit2,bit3,bit4,bit5)
